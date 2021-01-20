@@ -1,0 +1,71 @@
+n = 총학생수
+
+lost = 도난당한 학생
+
+reserve = 여벌 체육복
+
+n	lost	reserve	     return
+5	[2, 4]	[1, 3, 5] 	5
+5	[2, 4]	[3]       	4
+3	[3]	    [1]	        2
+여벌옷있는 학생이 도난 당하면 못빌리게 -1로 설정 
+
+    if lost[1,2,4] reserve[1,3,5]
+
+옷을 빌려준 학생을 -1로 설정
+
+    2는 1,3 되므로 1이 빌려주면 1을 -1 변경 후 break
+
+return answer은
+
+총 학생 - 도난당한 학생 + 여벌도난(reserve에서 뺀만큼?) + 빌린학생
+
+
+
+class Solution{
+
+    public int solution(int n, int[] lost, int[] reserve){
+
+int answer = 0;
+
+int lost2 =0; //여벌있는 학생의 도난
+
+int count = 0; //빌린학생
+
+
+
+for(int i=0; i<lost.length; i++){
+
+    for(int j=0; j<reserve.length; j++){
+
+        if(lost[i] == reserve[j]){
+
+            lost2 ++;
+
+            lost[i] =-1;
+
+            reserve[j]= -1;
+
+            break;
+
+} } } //도난 당하면 빌려줄수없게 -1
+
+
+
+for(int i=0; i<lost.length; i++){
+
+       for(int j=0; j<reserve.length; j++){
+
+            if(lost[i] == reserve[j]+1 || lost[i] == reserve[j]-1){
+
+                count ++;
+
+                reserve[j] =-1;
+
+                break;
+
+} } }//빌려주고 -1로 바꾸고 break로 다음 for문
+
+return answer = n - lost.length +lost2 + count;
+
+} }
