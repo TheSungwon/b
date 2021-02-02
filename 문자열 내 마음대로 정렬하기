@@ -1,0 +1,45 @@
+import java.util.Collections;
+
+import java.util.ArrayList;
+
+
+
+
+
+class Solution {
+
+
+
+    public String[] solution(String[] strings, int n) {
+
+        String[] answer = new String[strings.length]; //answer배열과 string배열길이는 같다
+
+        ArrayList<String> array = new ArrayList<>(); //새 문자열 넣기위한 array
+
+
+
+        for(int i=0; i<strings.length; i++){
+
+            array.add(strings[i].charAt(n) + strings[i]);
+
+        //sun 이면 u + sun = usun ... ebed ,acar
+
+}
+
+        Collections.sort(array); //정렬
+
+
+
+    for(int i=0; i<array.size(); i++){
+
+    answer[i] = array.get(i).substring(1);
+
+    //substring(1)로 앞부분 자르기
+
+}
+
+    return answer;
+
+    }
+
+}
